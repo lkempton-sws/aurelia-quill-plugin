@@ -12,6 +12,9 @@ export class QuillEditor {
 
     @bindable() options; // per instance options
     @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) selection;
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) oldrange;
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) source;
 
     bind() {
         // merge the global options with any instance options
@@ -26,6 +29,7 @@ export class QuillEditor {
 
         // listen for changes and update the value
         this.editor.on('text-change', this.onTextChanged);
+        this.editor.on('selection-change', this.onSelectionChanged);
 
         if (this.value) {
             this.editor.root.innerHTML = this.value;
@@ -36,6 +40,12 @@ export class QuillEditor {
         this._textChanged = true;
         this.value = this.editor.root.innerHTML;
     };
+
+    onSelectionChanged = (range, oldRange, source) => {
+        this.selection = range;
+        this.oldrange = oldRange;
+        this.source = source;
+    }
 
     valueChanged(newValue, oldValue) {
         if (
@@ -51,6 +61,7 @@ export class QuillEditor {
     detached() {
         // clean up
         this.editor.off('text-change', this.onTextChanged);
+        this.editor.off('selection-change', this.onSelectionChanged)
         this.cleanModules();
 
         this.editor = null;
