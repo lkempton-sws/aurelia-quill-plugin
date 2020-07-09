@@ -1,6 +1,6 @@
 {
-    "name": "aurelia-quill-plugin",
-    "version": "0.1.6",
+    "name": "aurelia-quill-wrapper",
+    "version": "0.1.7",
     "description": "A Quil wrapper for Aurelia.",
     "scripts": {
         "prepush": "./node_modules/.bin/gulp prepare-release --bump=patch",
@@ -12,19 +12,16 @@
         "plugin",
         "quil"
     ],
-    "homepage": "https://github.com/arabsight/aurelia-quill-plugin",
-    "bugs": {
-        "url": "https://github.com/arabsight/aurelia-quill-plugin/issues"
-    },
+    "homepage": "https://github.com/lkempton-sws/aurelia-quill-plugin",
     "license": "MIT",
-    "author": "Rabah Ghodbane <r-ghodbane@live.com>",
+    "author": "Lee Kempton <lee.kempton@softwaresolved.com>",
     "main": "dist/commonjs/index.js",
     "files": [
         "dist"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/arabsight/aurelia-quill-plugin"
+        "url": "https://github.com/lkempton-sws/aurelia-quill-plugin"
     },
     "devDependencies": {
         "aurelia-tools": "^2.0.0",
