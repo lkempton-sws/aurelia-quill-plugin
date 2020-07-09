@@ -3,7 +3,7 @@
 ## Install
 
 ```shell
-npm i quill aurelia-quill-plugin
+npm i quill aurelia-quill-wrapper
 ```
 
 ## Bundle (Aurelia-CLI - requirejs)
@@ -18,8 +18,8 @@ npm i quill aurelia-quill-plugin
     ]
 },
 {
-    "name": "aurelia-quill-plugin",
-    "path": "../node_modules/aurelia-quill-plugin/dist/amd",
+    "name": "aurelia-quill-wrapper",
+    "path": "../node_modules/aurelia-quill-wrapper/dist/amd",
     "main": "index"
 }
 ```
@@ -27,7 +27,7 @@ npm i quill aurelia-quill-plugin
 ## Register
 
 ```js
-aurelia.use.plugin('aurelia-quill-plugin');
+aurelia.use.plugin('aurelia-quill-wrapper');
 ```
 
 for webpack:
@@ -35,7 +35,7 @@ for webpack:
 ```js
 import 'quill/dist/quill.snow.css';
 
-aurelia.use.plugin(PLATFORM.moduleName('aurelia-quill-plugin'));
+aurelia.use.plugin(PLATFORM.moduleName('aurelia-quill-wrapper'));
 ```
 
 ## Usage
@@ -43,7 +43,12 @@ aurelia.use.plugin(PLATFORM.moduleName('aurelia-quill-plugin'));
 ```html
 <require from="quill/quill.snow.css"></require>
 
-<quill-editor value.bind="message"></quill-editor>
+<quill-editor 
+    value.bind="message" 
+    selection.bind="selection" 
+    oldrange.bind="oldselection"
+    source.bind="source">
+</quill-editor>
 ```
 
 ## Options
@@ -60,7 +65,7 @@ let options = {
     readOnly: true
 };
 
-aurelia.use.plugin('aurelia-quill-plugin', options);
+aurelia.use.plugin('aurelia-quill-wrapper', options);
 ```
 
 If you want per-instance options use the bindable `options` property:
