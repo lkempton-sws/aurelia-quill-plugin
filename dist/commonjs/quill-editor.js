@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.QuillEditor = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _selection;
+var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
 var _quill = require('quill');
 
@@ -64,7 +64,7 @@ function _initializerWarningHelper(descriptor, context) {
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var QuillEditor = exports.QuillEditor = (_dec = (0, _aureliaTemplating.inlineView)('<template>\n    <div ref="quillEditor"></div>\n</template>'), _dec2 = (0, _aureliaTemplating.customElement)('quill-editor'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }),_dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
+var QuillEditor = exports.QuillEditor = (_dec = (0, _aureliaTemplating.inlineView)('<template>\n    <div ref="quillEditor"></div>\n</template>'), _dec2 = (0, _aureliaTemplating.customElement)('quill-editor'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
     function QuillEditor() {
         var _this = this;
 
@@ -76,16 +76,10 @@ var QuillEditor = exports.QuillEditor = (_dec = (0, _aureliaTemplating.inlineVie
 
         _initDefineProp(this, 'value', _descriptor2, this);
 
-        _initDefineProp(this, 'selection', _descriptor3, this);
-
         this.onTextChanged = function () {
             _this._textChanged = true;
             _this.value = _this.editor.root.innerHTML;
         };
-
-        this.onSelectionChanged = (range, oldRange, source) => {
-            _this.selection = range;
-        }
     }
 
     QuillEditor.prototype.bind = function bind() {
@@ -97,7 +91,6 @@ var QuillEditor = exports.QuillEditor = (_dec = (0, _aureliaTemplating.inlineVie
         this.editor = new _quill2.default(this.quillEditor, this.options);
 
         this.editor.on('text-change', this.onTextChanged);
-        this.editor.on('selection-change', this.onSelectionChanged);
 
         if (this.value) {
             this.editor.root.innerHTML = this.value;
@@ -113,7 +106,6 @@ var QuillEditor = exports.QuillEditor = (_dec = (0, _aureliaTemplating.inlineVie
 
     QuillEditor.prototype.detached = function detached() {
         this.editor.off('text-change', this.onTextChanged);
-        this.editor.off('selection-change', this.onSelectionChanged);
         this.cleanModules();
 
         this.editor = null;
@@ -139,9 +131,6 @@ var QuillEditor = exports.QuillEditor = (_dec = (0, _aureliaTemplating.inlineVie
     enumerable: true,
     initializer: null
 }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec4], {
-    enumerable: true,
-    initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'selection', [_dec5], {
     enumerable: true,
     initializer: null
 })), _class2)) || _class) || _class);
