@@ -48,13 +48,10 @@ export class QuillEditor {
     }
 
     valueChanged(newValue, oldValue) {
-        if (
-            newValue !== oldValue &&
-            this.editor.root.innerHTML !== newValue &&
-            this._textChanged === false
-        ) {
+        if (newValue !== oldValue && this.editor.root.innerHTML !== newValue) {
             this.editor.root.innerHTML = this.value;
         }
+        
         this._textChanged = false;
     }
 
